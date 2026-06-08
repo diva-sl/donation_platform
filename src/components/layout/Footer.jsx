@@ -52,50 +52,136 @@ const Footer = () => {
 
       {/* Main Footer */}
       <section>
-        <div className="max-w-7xl mx-auto px-4 py-16">
-          <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-10">
+        <div className="max-w-7xl mx-auto px-4 py-12">
+          <div
+            className="
+  grid
+  lg:grid-cols-[1.6fr_1fr_1fr_1fr_1.2fr]
+  md:grid-cols-2
+  gap-8
+"
+          >
             {/* Company */}
-            <div>
-              <img src={Logo} alt="Mysticpace" className="h-16 mb-4" />
+            <div className="max-w-sm">
+              {/* Logo */}
 
-              <p className="text-slate-400 leading-relaxed">
-                Mysticpace Platform is a trusted donation and fundraising
-                platform helping individuals, NGOs, and communities raise funds
-                for meaningful causes.
+              <div className="flex items-center mb-4">
+                <img
+                  src={Logo}
+                  alt="Mysticpace"
+                  className="
+      h-14
+      md:h-16
+      w-auto
+      object-contain
+    "
+                />
+              </div>
+
+              {/* Description */}
+
+              <p
+                className="
+    text-slate-400
+    text-sm
+    leading-7
+  "
+              >
+                Mysticpace is a trusted crowdfunding platform connecting donors,
+                individuals, NGOs, and communities to support education,
+                healthcare, emergency relief, food assistance, and social impact
+                initiatives.
               </p>
 
-              <div className="flex gap-4 mt-6">
+              {/* Social Media */}
+
+              <div className="flex gap-3 mt-5">
                 <a
                   href="#"
-                  className="bg-slate-800 p-3 rounded-full hover:bg-orange-500 transition"
+                  className="
+      bg-slate-800
+      w-10
+      h-10
+      rounded-full
+      flex
+      items-center
+      justify-center
+      hover:bg-orange-500
+      transition-all
+      duration-300
+    "
                 >
                   <FaFacebookF />
                 </a>
 
                 <a
                   href="#"
-                  className="bg-slate-800 p-3 rounded-full hover:bg-orange-500 transition"
+                  className="
+      bg-slate-800
+      w-10
+      h-10
+      rounded-full
+      flex
+      items-center
+      justify-center
+      hover:bg-orange-500
+      transition-all
+      duration-300
+    "
                 >
                   <FaInstagram />
                 </a>
 
                 <a
                   href="#"
-                  className="bg-slate-800 p-3 rounded-full hover:bg-orange-500 transition"
+                  className="
+      bg-slate-800
+      w-10
+      h-10
+      rounded-full
+      flex
+      items-center
+      justify-center
+      hover:bg-orange-500
+      transition-all
+      duration-300
+    "
                 >
                   <FaLinkedinIn />
                 </a>
 
                 <a
                   href="#"
-                  className="bg-slate-800 p-3 rounded-full hover:bg-orange-500 transition"
+                  className="
+      bg-slate-800
+      w-10
+      h-10
+      rounded-full
+      flex
+      items-center
+      justify-center
+      hover:bg-orange-500
+      transition-all
+      duration-300
+    "
                 >
                   <FaYoutube />
                 </a>
 
                 <a
                   href="#"
-                  className="bg-slate-800 p-3 rounded-full hover:bg-orange-500 transition"
+                  className="
+      bg-slate-800
+      w-10
+      h-10
+      rounded-full
+      flex
+      items-center
+      justify-center
+      hover:bg-orange-500
+      transition-all
+      duration-300
+    "
                 >
                   <FaWhatsapp />
                 </a>
@@ -104,7 +190,16 @@ const Footer = () => {
 
             {/* Quick Links */}
             <div>
-              <h3 className="text-xl font-semibold mb-5">Quick Links</h3>
+              <h3
+                className="
+text-lg
+font-semibold
+mb-4
+text-white
+"
+              >
+                Quick Links
+              </h3>
 
               <ul className="space-y-3">
                 <li>
@@ -154,26 +249,120 @@ const Footer = () => {
             {/* Causes */}
             <div>
               <h3 className="text-xl font-semibold mb-5">Popular Causes</h3>
+              <ul className="space-y-3">
+                <li>
+                  <Link
+                    to="/causes/temple-renovation"
+                    className="text-slate-400 hover:text-orange-400"
+                  >
+                    Temple Renovation
+                  </Link>
+                </li>
+
+                <li>
+                  <Link
+                    to="/causes/education"
+                    className="text-slate-400 hover:text-orange-400"
+                  >
+                    Education Support
+                  </Link>
+                </li>
+
+                <li>
+                  <Link
+                    to="/causes/medical"
+                    className="text-slate-400 hover:text-orange-400"
+                  >
+                    Medical Support
+                  </Link>
+                </li>
+
+                <li>
+                  <Link
+                    to="/causes/food"
+                    className="text-slate-400 hover:text-orange-400"
+                  >
+                    Food Donation
+                  </Link>
+                </li>
+
+                <li>
+                  <Link
+                    to="/causes/old-age"
+                    className="text-slate-400 hover:text-orange-400"
+                  >
+                    Old Age Care
+                  </Link>
+                </li>
+              </ul>
+            </div>
+            {/* Legal */}
+
+            <div>
+              <h3 className="text-lg font-semibold mb-4 text-white">Legal</h3>
 
               <ul className="space-y-3">
-                <li className="text-slate-400 hover:text-orange-400 cursor-pointer">
-                  Education Support
+                <li>
+                  <Link
+                    to="/privacy-policy"
+                    className="text-slate-400 hover:text-orange-400"
+                  >
+                    Privacy Policy
+                  </Link>
                 </li>
 
-                <li className="text-slate-400 hover:text-orange-400 cursor-pointer">
-                  Food Donation
+                <li>
+                  <Link
+                    to="/terms"
+                    className="text-slate-400 hover:text-orange-400"
+                  >
+                    Terms & Conditions
+                  </Link>
                 </li>
 
-                <li className="text-slate-400 hover:text-orange-400 cursor-pointer">
-                  Medical Support
+                <li>
+                  <Link
+                    to="/refund-policy"
+                    className="text-slate-400 hover:text-orange-400"
+                  >
+                    Refund Policy
+                  </Link>
                 </li>
 
-                <li className="text-slate-400 hover:text-orange-400 cursor-pointer">
-                  Old Age Care
+                <li>
+                  <Link
+                    to="/cookie-policy"
+                    className="text-slate-400 hover:text-orange-400"
+                  >
+                    Cookie Policy
+                  </Link>
                 </li>
 
-                <li className="text-slate-400 hover:text-orange-400 cursor-pointer">
-                  Emergency Relief
+                <li>
+                  <Link
+                    to="/disclaimer"
+                    className="text-slate-400 hover:text-orange-400"
+                  >
+                    Disclaimer
+                  </Link>
+                </li>
+
+                <li>
+                  <Link
+                    to="/campaign-guidelines"
+                    className="text-slate-400 hover:text-orange-400"
+                  >
+                    Campaign Guidelines
+                  </Link>
+                </li>
+
+                <li>
+                  <Link
+                    to="/community-guidelines"
+                    className="text-slate-400 hover:text-orange-400"
+                  >
+                    Community Guidelines
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -184,27 +373,28 @@ const Footer = () => {
                 Contact Information
               </h3>
 
-              <div className="space-y-5">
+              <div className="space-y-4">
                 <div className="flex gap-3">
                   <Phone className="text-orange-500" />
-                  <span className="text-slate-400">+91 7676931982</span>
+                  <span className="text-slate-400 text-sm">+91 7676931982</span>
                 </div>
 
                 <div className="flex gap-3">
                   <Mail className="text-orange-500" />
-                  <span className="text-slate-400">support@Mysticpace.com</span>
+                  <span className="text-slate-400 text-sm">
+                    support@Mysticpace.com
+                  </span>
                 </div>
 
                 <div className="flex gap-3">
                   <MapPin className="text-orange-500" />
-                  <span className="text-slate-400">
+                  <span className="text-slate-400 text-sm">
                     Bangalore, Karnataka, India
                   </span>
                 </div>
               </div>
             </div>
           </div>
-
           {/* Trust Badges */}
           <div className="grid md:grid-cols-3 gap-5 mt-16">
             <div className="bg-slate-900 rounded-2xl p-5 flex items-center gap-4">
@@ -240,7 +430,6 @@ const Footer = () => {
               </div>
             </div>
           </div>
-
           {/* Copyright */}
           <div className="border-t border-slate-800 mt-14 pt-8 text-center">
             <p className="text-slate-500">

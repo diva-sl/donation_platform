@@ -20,48 +20,77 @@ import StartFundraiser from "../pages/fundraiser/StartFundraiser";
 
 import PrivacyPolicy from "../pages/legal/PrivacyPolicy";
 import Terms from "../pages/legal/Terms";
+import Supporters from "../pages/campaigns/Supporters";
 
 import NotFound from "../pages/NotFound";
+import ScrollToTop from "../components/common/ScrollToTop";
+import CauseDetails from "../pages/causes/CauseDetails";
+import Disclaimer from "../pages/legal/Disclaimer";
+import CookiePolicy from "../pages/legal/CookiePolicy";
+import CampaignGuidelines from "../pages/legal/CampaignGuidelines";
+import CommunityGuidelines from "../pages/legal/CommunityGuidelines";
+import FAQ from "../pages/legal/FAQ";
+import RefundPolicy from "../pages/legal/RefundPolicy";
 
 const Router = () => {
   return (
-    <Routes>
-      {/* Public Routes */}
+    <>
+      <ScrollToTop />
 
-      <Route element={<PublicLayout />}>
-        <Route path="/" element={<Home />} />
+      <Routes>
+        {/* Public Routes */}
 
-        <Route path="/campaigns" element={<CampaignList />} />
+        <Route element={<PublicLayout />}>
+          <Route path="/" element={<Home />} />
 
-        <Route path="/campaign/:slug" element={<CampaignDetails />} />
+          <Route path="/campaigns" element={<CampaignList />} />
 
-        <Route path="/about" element={<About />} />
+          <Route path="/campaign/:slug" element={<CampaignDetails />} />
 
-        <Route path="/contact" element={<Contact />} />
+          <Route path="/about" element={<About />} />
 
-        <Route path="/start-fundraiser" element={<StartFundraiser />} />
+          <Route path="/contact" element={<Contact />} />
 
-        <Route path="/login" element={<Login />} />
+          <Route path="/start-fundraiser" element={<StartFundraiser />} />
 
-        <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
 
-        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/register" element={<Register />} />
 
-        <Route path="/terms" element={<Terms />} />
-      </Route>
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
 
-      {/* Protected Routes */}
+          <Route path="/terms" element={<Terms />} />
+          <Route path="/campaign/:slug/supporters" element={<Supporters />} />
+          <Route path="/causes/:slug" element={<CauseDetails />} />
+          <Route path="/faq" element={<FAQ />} />
 
-      <Route element={<ProtectedLayout />}>
-        <Route path="/profile" element={<Profile />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
 
-        <Route path="/dashboard" element={<Dashboard />} />
-      </Route>
+          <Route path="/terms" element={<Terms />} />
 
-      {/* 404 */}
+          <Route path="/refund-policy" element={<RefundPolicy />} />
+          <Route path="/disclaimer" element={<Disclaimer />} />
+          <Route path="/cookie-policy" element={<CookiePolicy />} />
+          <Route path="/campaign-guidelines" element={<CampaignGuidelines />} />
+          <Route
+            path="/community-guidelines"
+            element={<CommunityGuidelines />}
+          />
+        </Route>
 
-      <Route path="*" element={<NotFound />} />
-    </Routes>
+        {/* Protected Routes */}
+
+        <Route element={<ProtectedLayout />}>
+          <Route path="/profile" element={<Profile />} />
+
+          <Route path="/dashboard" element={<Dashboard />} />
+        </Route>
+
+        {/* 404 */}
+
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </>
   );
 };
 

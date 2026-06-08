@@ -1,9 +1,11 @@
 import React from "react";
 import { Heart, Share2, Users, Clock3 } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const campaigns = [
   {
     id: 1,
+    slug: "education-for-rural-children",
     title: "Help Children Continue Their Education",
     image: "https://images.unsplash.com/photo-1509062522246-3755977927d7",
     raised: 850000,
@@ -12,8 +14,10 @@ const campaigns = [
     days: 18,
     category: "Education",
   },
+
   {
     id: 2,
+    slug: "medical-support-treatment",
     title: "Support Critical Medical Treatment",
     image: "https://images.unsplash.com/photo-1584515933487-779824d29309",
     raised: 540000,
@@ -22,8 +26,10 @@ const campaigns = [
     days: 12,
     category: "Medical",
   },
+
   {
     id: 3,
+    slug: "feed-families-in-need",
     title: "Feed Families In Need",
     image: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c",
     raised: 420000,
@@ -35,6 +41,13 @@ const campaigns = [
 ];
 
 const FeaturedCampaigns = () => {
+  const handleShare = (campaign) => {
+    navigator.share?.({
+      title: campaign.title,
+      text: campaign.title,
+      url: `${window.location.origin}/campaign/${campaign.slug}`,
+    });
+  };
   return (
     <section className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4">
@@ -50,24 +63,25 @@ const FeaturedCampaigns = () => {
               Make An Impact Today
             </h2>
           </div>
-
-          <button
+          <Link
+            to="/campaigns"
             className="
-              mt-5 md:mt-0
-              border
-              border-orange-500
-              text-orange-500
-              px-6
-              py-3
-              rounded-xl
-              font-semibold
-              hover:bg-orange-500
-              hover:text-white
-              transition
-            "
+  mt-5
+  md:mt-0
+  border
+  border-orange-500
+  text-orange-500
+  px-6
+  py-3
+  rounded-xl
+  font-semibold
+  hover:bg-orange-500
+  hover:text-white
+  transition
+"
           >
             View All Campaigns
-          </button>
+          </Link>
         </div>
 
         {/* Cards */}
@@ -92,16 +106,20 @@ const FeaturedCampaigns = () => {
                 "
               >
                 <div className="relative">
-                  <img
-                    src={campaign.image}
-                    alt={campaign.title}
-                    className="
-                      h-64
-                      w-full
-                      object-cover
-                    "
-                  />
-
+                  <Link to={`/campaign/${campaign.slug}`}>
+                    <img
+                      src={campaign.image}
+                      alt={campaign.title}
+                      className="
+    h-64
+    w-full
+    object-cover
+    group-hover:scale-105
+    transition-all
+    duration-500
+  "
+                    />
+                  </Link>
                   <span
                     className="
                       absolute
@@ -117,13 +135,41 @@ const FeaturedCampaigns = () => {
                   >
                     {campaign.category}
                   </span>
+                  <span
+                    className="
+  absolute
+  top-4
+  right-4
+  bg-orange-500
+  text-white
+  px-3
+  py-1
+  rounded-full
+  text-xs
+  font-semibold
+"
+                  >
+                    Featured
+                  </span>
                 </div>
 
-                <div className="p-6">
-                  <h3 className="font-bold text-xl text-slate-900">
-                    {campaign.title}
-                  </h3>
-
+                <div className="p-5">
+                  <Link to={`/campaign/${campaign.slug}`}>
+                    <h3
+                      className="
+    font-bold
+    text-lg
+    text-slate-900
+    hover:text-orange-500
+    transition
+    line-clamp-2
+    h-14
+    leading-7
+  "
+                    >
+                      {campaign.title}
+                    </h3>
+                  </Link>
                   <div className="mt-6">
                     <div className="flex justify-between mb-2 text-sm">
                       <span>Raised</span>
@@ -167,46 +213,49 @@ const FeaturedCampaigns = () => {
                   </div>
 
                   <div className="flex gap-3 mt-6">
-                    <button
+                    <Link
+                      to={`/campaign/${campaign.slug}`}
                       className="
-                        flex-1
-                        bg-orange-500
-                        text-white
-                        py-3
-                        rounded-xl
-                        font-semibold
-                        hover:bg-orange-600
-                      "
+  flex-1
+  bg-orange-500
+  text-white
+  py-3
+  rounded-xl
+  font-semibold
+  hover:bg-orange-600
+  text-center
+"
                     >
                       Donate Now
-                    </button>
-
+                    </Link>
                     <button
+                      onClick={() => handleShare(campaign)}
                       className="
-                        w-12
-                        h-12
-                        rounded-xl
-                        border
-                        flex
-                        items-center
-                        justify-center
-                      "
+  w-12
+  h-12
+  rounded-xl
+  border
+  flex
+  items-center
+  justify-center
+"
                     >
                       <Share2 size={18} />
                     </button>
-
                     <button
                       className="
-                        w-12
-                        h-12
-                        rounded-xl
-                        border
-                        flex
-                        items-center
-                        justify-center
-                      "
+  w-12
+  h-12
+  rounded-xl
+  border
+  flex
+  items-center
+  justify-center
+  hover:bg-red-50
+  hover:border-red-300
+"
                     >
-                      <Heart size={18} />
+                      <Heart size={18} className="hover:text-red-500" />
                     </button>
                   </div>
                 </div>

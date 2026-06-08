@@ -1,19 +1,19 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import {
-  MapPin,
-  Users,
-  Clock3,
-  Share2,
-  Heart,
-  Facebook,
-  Twitter,
-  Linkedin,
-} from "lucide-react";
+import { MapPin, Users, Clock3 } from "lucide-react";
 
 import DonationForm from "../../components/campaign/DonationForm";
 import CampaignCard from "../../components/campaign/CampaignCard";
+
+import OrganizerCard from "../campaigns/OrganizerCard";
+import RecentDonors from "../campaigns/RecentDonors";
+import TopDonors from "../campaigns/TopDonors";
+import CommentsSection from "../campaigns/CommentsSection";
+import ActivityFeed from "../campaigns/ActivityFeed";
+import ShareCampaign from "../campaigns/ShareCampaign";
+
 import { campaigns } from "../../data/campaigns";
+import { donors } from "../../data/donors";
 
 const CampaignDetails = () => {
   const { slug } = useParams();
@@ -33,41 +33,29 @@ const CampaignDetails = () => {
   return (
     <div className="bg-gray-50 min-h-screen">
       {/* Hero */}
-
       <section className="relative">
         <img
           src={campaign.image}
           alt={campaign.title}
           className="
-            w-full
-            h-[500px]
-            object-cover
-          "
-        />
-
-        <div
-          className="
-          absolute
-          inset-0
-          bg-black/50
+          w-full
+          h-[400px]
+          md:h-[500px]
+          object-cover
         "
         />
 
-        <div
-          className="
-          absolute
-          inset-0
-          flex
-          items-center
-        "
-        >
-          <div className="max-w-7xl mx-auto px-4 text-white">
+        <div className="absolute inset-0 bg-black/60" />
+
+        <div className="absolute inset-0 flex items-center">
+          <div className="max-w-7xl mx-auto px-4 w-full text-white">
             <span
               className="
               bg-orange-500
               px-4
               py-2
               rounded-full
+              text-sm
             "
             >
               {campaign.category}
@@ -75,10 +63,11 @@ const CampaignDetails = () => {
 
             <h1
               className="
-              text-4xl
-              md:text-6xl
+              text-3xl
+              md:text-5xl
+              lg:text-6xl
               font-bold
-              mt-6
+              mt-5
               max-w-4xl
             "
             >
@@ -89,13 +78,14 @@ const CampaignDetails = () => {
               className="
               flex
               flex-wrap
-              gap-6
-              mt-6
+              gap-4
+              md:gap-6
+              mt-5
             "
             >
               <div className="flex items-center gap-2">
                 <MapPin size={18} />
-                {campaign.location}
+                {campaign.location || "India"}
               </div>
 
               <div className="flex items-center gap-2">
@@ -112,196 +102,149 @@ const CampaignDetails = () => {
         </div>
       </section>
 
-      {/* Main */}
-
-      <div className="max-w-7xl mx-auto px-4 py-16">
-        <div
-          className="
-          grid
-          lg:grid-cols-3
-          gap-10
-        "
-        >
-          {/* Left */}
-
+      {/* Main Content */}
+      <div className="max-w-7xl mx-auto px-4 py-10 lg:py-14">
+        <div className="grid lg:grid-cols-3 gap-8">
+          {/* Left Content */}
           <div className="lg:col-span-2">
             {/* Progress */}
+            <div className="bg-white rounded-2xl p-6 shadow-sm">
+              <h2 className="text-xl font-bold">Campaign Progress</h2>
 
-            <div
-              className="
-              bg-white
-              rounded-3xl
-              p-8
-              shadow-sm
-            "
-            >
-              <h3 className="text-2xl font-bold">Campaign Progress</h3>
-
-              <div className="mt-6">
-                <div className="flex justify-between mb-3">
+              <div className="mt-5">
+                <div className="flex justify-between mb-2">
                   <span>Raised</span>
-
                   <span>{Math.round(progress)}%</span>
                 </div>
 
-                <div className="h-4 bg-gray-200 rounded-full">
+                <div className="h-3 bg-gray-200 rounded-full overflow-hidden">
                   <div
-                    className="
-                    h-full
-                    bg-orange-500
-                    rounded-full
-                  "
+                    className="h-full bg-orange-500"
                     style={{
                       width: `${progress}%`,
                     }}
                   />
                 </div>
 
-                <div
-                  className="
-                  flex
-                  justify-between
-                  mt-4
-                "
-                >
+                <div className="flex justify-between mt-4">
                   <div>
                     <p className="text-sm text-gray-500">Raised</p>
 
-                    <h4 className="text-2xl font-bold text-green-600">
+                    <h3 className="text-xl font-bold text-green-600">
                       ₹{campaign.raisedAmount.toLocaleString()}
-                    </h4>
+                    </h3>
                   </div>
 
-                  <div>
+                  <div className="text-right">
                     <p className="text-sm text-gray-500">Goal</p>
 
-                    <h4 className="text-2xl font-bold">
+                    <h3 className="text-xl font-bold">
                       ₹{campaign.goalAmount.toLocaleString()}
-                    </h4>
+                    </h3>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Story */}
-
+            {/* Activity Alert */}
             <div
               className="
-              bg-white
-              rounded-3xl
-              p-8
-              shadow-sm
-              mt-8
+              bg-green-50
+              border
+              border-green-100
+              rounded-2xl
+              p-4
+              mt-6
             "
             >
-              <h2 className="text-3xl font-bold">Story</h2>
+              <p className="font-medium text-green-700">
+                🎉 Recent Donation Activity
+              </p>
 
-              <div className="mt-6 space-y-5 text-gray-700 leading-8">
+              <p className="text-sm text-green-600 mt-1">
+                Rajesh donated ₹2,500 • 5 mins ago
+              </p>
+            </div>
+
+            {/* Story */}
+            <div className="bg-white rounded-2xl p-6 shadow-sm mt-8">
+              <h2 className="text-2xl font-bold">Story</h2>
+
+              <div className="mt-5 space-y-5 text-gray-700 leading-8">
+                <p>{campaign.description}</p>
+
                 <p>
-                  This campaign aims to provide critical support for individuals
-                  and communities in need.
+                  Every contribution directly impacts lives and helps
+                  communities receive the support they need.
                 </p>
 
                 <p>
-                  Every contribution directly helps improve lives through
-                  education, healthcare, food support and emergency assistance.
-                </p>
-
-                <p>
-                  Your support makes a measurable difference and helps us
-                  achieve our mission.
+                  Together we can create meaningful change and reach our
+                  fundraising goal.
                 </p>
               </div>
             </div>
 
             {/* Updates */}
+            <div className="bg-white rounded-2xl p-6 shadow-sm mt-8">
+              <h2 className="text-2xl font-bold">Campaign Updates</h2>
 
-            <div
-              className="
-              bg-white
-              rounded-3xl
-              p-8
-              shadow-sm
-              mt-8
-            "
-            >
-              <h2 className="text-3xl font-bold">Campaign Updates</h2>
-
-              <div className="mt-8 space-y-6">
-                <div className="border-l-4 border-orange-500 pl-5">
-                  <h4 className="font-bold">First Milestone Achieved</h4>
+              <div className="mt-6 space-y-5">
+                <div className="border-l-4 border-orange-500 pl-4">
+                  <h4 className="font-semibold">First Milestone Achieved</h4>
 
                   <p className="text-gray-600 mt-2">
-                    Thanks to all donors. We have reached 50% of our target.
+                    We reached 50% of our goal.
                   </p>
                 </div>
 
-                <div className="border-l-4 border-orange-500 pl-5">
-                  <h4 className="font-bold">Community Outreach Started</h4>
+                <div className="border-l-4 border-orange-500 pl-4">
+                  <h4 className="font-semibold">Community Outreach Started</h4>
 
                   <p className="text-gray-600 mt-2">
-                    Initial beneficiaries have begun receiving support.
+                    Support has started reaching beneficiaries.
                   </p>
                 </div>
               </div>
             </div>
 
-            {/* Share */}
+            {/* Donors */}
+            <RecentDonors donors={donors} campaignSlug={campaign.slug} />
 
-            <div
-              className="
-              bg-white
-              rounded-3xl
-              p-8
-              shadow-sm
-              mt-8
-            "
-            >
-              <h2 className="text-2xl font-bold">Share Campaign</h2>
+            {/* Top Donors */}
+            <TopDonors donors={donors} />
 
-              <div className="flex gap-4 mt-6">
-                <button className="w-12 h-12 rounded-full bg-blue-600 text-white flex items-center justify-center">
-                  <Facebook size={18} />
-                </button>
-
-                <button className="w-12 h-12 rounded-full bg-sky-500 text-white flex items-center justify-center">
-                  <Twitter size={18} />
-                </button>
-
-                <button className="w-12 h-12 rounded-full bg-blue-700 text-white flex items-center justify-center">
-                  <Linkedin size={18} />
-                </button>
-
-                <button className="w-12 h-12 rounded-full bg-orange-500 text-white flex items-center justify-center">
-                  <Share2 size={18} />
-                </button>
-              </div>
-            </div>
+            {/* Comments */}
+            <CommentsSection />
           </div>
 
-          {/* Right Sidebar */}
-
+          {/* Sidebar */}
           <div>
-            <div className="sticky top-24">
+            <div className="sticky top-24 space-y-5">
               <DonationForm
                 campaignId={campaign.id}
                 campaignTitle={campaign.title}
               />
+
+              <OrganizerCard organizer={campaign.organizer} />
+
+              <ActivityFeed />
+
+              <ShareCampaign />
             </div>
           </div>
         </div>
 
         {/* Similar Campaigns */}
-
-        <div className="mt-20">
-          <h2 className="text-3xl font-bold mb-8">Similar Campaigns</h2>
+        <div className="mt-16">
+          <h2 className="text-2xl font-bold mb-6">Similar Campaigns</h2>
 
           <div
             className="
             grid
-            md:grid-cols-2
+            sm:grid-cols-2
             lg:grid-cols-3
-            gap-8
+            gap-6
           "
           >
             {campaigns

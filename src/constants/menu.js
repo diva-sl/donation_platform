@@ -11,6 +11,11 @@ export const menuItems = [
     title: "Causes",
     children: [
       {
+        title: "Temple Renovation",
+        path: "/causes/temple-renovation",
+        icon: "🛕",
+      },
+      {
         title: "Education Support",
         path: "/causes/education",
         icon: "🎓",

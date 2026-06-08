@@ -4,33 +4,33 @@ import Marquee from "react-fast-marquee";
 const partners = [
   {
     name: "UNICEF",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/UNICEF_Logo.svg/512px-UNICEF_Logo.svg.png",
-  },
-  {
-    name: "Red Cross",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/IFRC_logo.svg/512px-IFRC_logo.svg.png",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/5/57/UNICEF_Logo.png",
   },
   {
     name: "WHO",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/World_Health_Organization_Logo.svg/512px-World_Health_Organization_Logo.svg.png",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/WHO_logo.svg/330px-WHO_logo.svg.png",
   },
   {
-    name: "Save Children",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Save_the_Children_logo.svg/512px-Save_the_Children_logo.svg.png",
+    name: "Red Cross",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/7/7c/Indian_Red_Cross_Society_Logo.png",
+  },
+  {
+    name: "Save The Children",
+    logo: "https://www.savethechildren.net/themes/custom/sci_theme/images/sci-logo.svg",
   },
   {
     name: "Care India",
-    logo: "https://upload.wikimedia.org/wikipedia/en/thumb/6/66/Care_India_logo.svg/512px-Care_India_logo.svg.png",
+    logo: "https://careifoundation.org/images/logo.jpg",
   },
   {
-    name: "Give India",
-    logo: "https://www.giveindia.org/images/logo.svg",
+    name: "GiveIndia",
+    logo: "https://cfstatic.give.do/4a8e5f5d-659d-4558-8ae9-378ec1e92b1b.webp",
   },
 ];
 
 const Partners = () => {
   return (
-    <section className="py-24 bg-white">
+    <section className="py-16 bg-white">
       <div className="max-w-7xl mx-auto px-4">
         {/* Heading */}
 

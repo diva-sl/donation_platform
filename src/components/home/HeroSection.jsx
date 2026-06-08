@@ -1,8 +1,14 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { FaHeart, FaHandHoldingHeart, FaSearch, FaUsers } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 const HeroSection = () => {
+  const navigate = useNavigate();
+
+  const [search, setSearch] = useState("");
   return (
     <section className="relative overflow-hidden bg-gradient-to-br from-orange-50 via-white to-orange-100">
       {/* Background Blur */}
@@ -37,28 +43,73 @@ const HeroSection = () => {
             <div className="mt-8 bg-white shadow-lg rounded-2xl p-2 flex flex-col sm:flex-row gap-3">
               <div className="flex items-center flex-1 px-4">
                 <FaSearch className="text-gray-400 mr-3" />
-
                 <input
                   type="text"
                   placeholder="Search campaigns..."
+                  value={search}
+                  onChange={(e) => setSearch(e.target.value)}
                   className="w-full outline-none py-3"
                 />
               </div>
-
-              <button className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-xl font-semibold">
+              <button
+                onClick={() =>
+                  navigate(`/campaigns?search=${encodeURIComponent(search)}`)
+                }
+                className="
+  bg-orange-500
+  hover:bg-orange-600
+  text-white
+  px-6
+  py-3
+  rounded-xl
+  font-semibold
+"
+              >
                 Search
               </button>
             </div>
 
             {/* CTA Buttons */}
             <div className="mt-8 flex flex-wrap gap-4">
-              <button className="bg-orange-500 hover:bg-orange-600 text-white px-7 py-4 rounded-xl font-semibold shadow-lg">
+              <Link
+                to="/campaigns"
+                className="
+  bg-orange-500
+  hover:bg-orange-600
+  text-white
+  px-7
+  py-4
+  rounded-xl
+  font-semibold
+  shadow-lg
+  inline-flex
+  items-center
+  justify-center
+"
+              >
                 Donate Now
-              </button>
+              </Link>
 
-              <button className="border-2 border-orange-500 text-orange-500 hover:bg-orange-500 hover:text-white px-7 py-4 rounded-xl font-semibold transition">
+              <Link
+                to="/start-fundraiser"
+                className="
+  border-2
+  border-orange-500
+  text-orange-500
+  hover:bg-orange-500
+  hover:text-white
+  px-7
+  py-4
+  rounded-xl
+  font-semibold
+  transition
+  inline-flex
+  items-center
+  justify-center
+"
+              >
                 Start Fundraiser
-              </button>
+              </Link>
             </div>
 
             {/* Trust Badges */}

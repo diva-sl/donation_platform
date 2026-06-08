@@ -8,36 +8,38 @@ import "swiper/css/pagination";
 const stories = [
   {
     id: 1,
-    image: "https://images.unsplash.com/photo-1516627145497-ae6968895b74",
+    image:
+      "https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=1200",
     name: "Arjun Kumar",
     title: "Education Support",
     description:
-      "Thanks to generous donors, Arjun completed his education and secured admission to engineering college.",
+      "Completed higher education through donor support and secured admission to an engineering college.",
     raised: "₹4,50,000",
   },
   {
     id: 2,
-    image: "https://images.unsplash.com/photo-1593113598332-cd59a93f7d26",
+    image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=1200",
     name: "Lakshmi Devi",
     title: "Medical Assistance",
     description:
-      "Emergency medical support helped Lakshmi receive life-saving treatment and recover successfully.",
+      "Received critical medical treatment and successfully recovered with community support.",
     raised: "₹7,20,000",
   },
   {
     id: 3,
-    image: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c",
+    image:
+      "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=1200",
     name: "Community Food Drive",
     title: "Food Donation",
     description:
-      "More than 5,000 meals were served to families in need through community contributions.",
+      "More than 5,000 meals were distributed to families facing food insecurity.",
     raised: "₹2,80,000",
   },
 ];
 
 const SuccessStories = () => {
   return (
-    <section className="py-24 bg-[#fffaf5]">
+    <section className="py-16 bg-[#fffaf5]">
       <div className="max-w-7xl mx-auto px-4">
         {/* Heading */}
 
@@ -60,9 +62,10 @@ const SuccessStories = () => {
 
         <Swiper
           slidesPerView={1}
-          spaceBetween={30}
+          spaceBetween={24}
           autoplay={{
             delay: 4000,
+            disableOnInteraction: false,
           }}
           pagination={{
             clickable: true,
@@ -81,69 +84,120 @@ const SuccessStories = () => {
             <SwiperSlide key={story.id}>
               <div
                 className="
-                  bg-white
-                  rounded-3xl
-                  overflow-hidden
-                  shadow-md
-                  hover:shadow-2xl
-                  transition-all
-                  duration-300
-                "
+    h-full
+    bg-white
+    rounded-2xl
+    overflow-hidden
+    border
+    border-gray-100
+    shadow-sm
+    hover:shadow-lg
+    transition-all
+    duration-300
+    group
+  "
               >
-                <img
-                  src={story.image}
-                  alt={story.name}
-                  className="
-                    h-64
-                    w-full
-                    object-cover
-                  "
-                />
+                {/* Image */}
 
-                <div className="p-6">
+                <div className="overflow-hidden">
+                  <img
+                    src={story.image}
+                    alt={story.name}
+                    className="
+        h-52
+        md:h-56
+        w-full
+        object-cover
+        group-hover:scale-105
+        transition-all
+        duration-500
+      "
+                  />
+                </div>
+
+                {/* Content */}
+
+                <div className="p-4 flex flex-col">
+                  {/* Category */}
+
                   <span
                     className="
-                      bg-orange-100
-                      text-orange-600
-                      px-3
-                      py-1
-                      rounded-full
-                      text-sm
-                    "
+        w-fit
+        bg-orange-100
+        text-orange-600
+        px-2.5
+        py-1
+        rounded-full
+        text-xs
+        font-medium
+      "
                   >
                     {story.title}
                   </span>
 
-                  <h3 className="text-2xl font-bold mt-4">{story.name}</h3>
+                  {/* Name */}
 
-                  <p className="text-slate-600 mt-4">{story.description}</p>
+                  <h3
+                    className="
+        text-lg
+        font-bold
+        text-slate-900
+        mt-3
+        h-12
+        line-clamp-2
+        leading-6
+      "
+                  >
+                    {story.name}
+                  </h3>
+
+                  {/* Description */}
+
+                  <p
+                    className="
+        text-slate-600
+        text-sm
+        leading-5
+        h-[60px]
+        line-clamp-3
+        mt-1.5
+      "
+                  >
+                    {story.description}
+                  </p>
+
+                  {/* Footer */}
 
                   <div
                     className="
-                      mt-6
-                      flex
-                      justify-between
-                      items-center
-                    "
+        mt-3
+        pt-3
+        border-t
+        flex
+        items-center
+        justify-between
+      "
                   >
                     <div>
-                      <p className="text-sm text-slate-500">Funds Raised</p>
+                      <p className="text-xs text-slate-500">Funds Raised</p>
 
-                      <h4 className="font-bold text-orange-600">
+                      <h4 className="font-bold text-orange-600 text-sm">
                         {story.raised}
                       </h4>
                     </div>
 
                     <button
                       className="
-                        bg-orange-500
-                        hover:bg-orange-600
-                        text-white
-                        px-5
-                        py-2
-                        rounded-xl
-                        font-medium
-                      "
+          bg-orange-500
+          hover:bg-orange-600
+          text-white
+          px-3
+          py-1.5
+          rounded-lg
+          text-sm
+          font-medium
+          transition
+        "
                     >
                       Read Story
                     </button>

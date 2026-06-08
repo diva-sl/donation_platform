@@ -8,6 +8,7 @@ import Partners from "../components/home/Partners";
 import Testimonials from "../components/home/Testimonials";
 import RecentDonations from "../components/home/RecentDonations";
 import Newsletter from "../components/home/Newsletter";
+import HowItWorks from "../components/home/HowItWorks";
 
 const Home = () => {
   return (
@@ -15,6 +16,7 @@ const Home = () => {
       <HeroSection />
       <TrustedSection />
       <ImpactStats />
+      <HowItWorks />
       <CategorySection />
       <FeaturedCampaigns />
       <SuccessStories />
