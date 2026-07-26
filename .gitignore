@@ -1,1 +1,10 @@
 node_modules
+dist
+dist-ssr
+*.local
+.env
+.env.production
+.env.development
+.eslintcache
+.DS_Store
+Thumbs.db
